@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ENTER_KEY_CODE } from '../../constants/constants'
+import { ENTER_KEY_CODE } from '../../constants/constants';
 import './style.css';
 
 class Textarea extends Component {
@@ -17,14 +17,14 @@ class Textarea extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
-      <textarea 
-        wrap="off" 
-        className="main__input-area js-input-text" 
-        placeholder="What needs to be done?" 
-        onKeyDown={this.handleKeyPress}>
-      </textarea>
+      <textarea
+        wrap="off"
+        className="main__input-area"
+        placeholder="What needs to be done?"
+        onKeyDown={this.handleKeyPress}
+      />
     );
   }
 }

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BtnDelete from '../BtnDelete';
-import { ENTER_KEY_CODE } from '../../constants/constants'
+import { ENTER_KEY_CODE } from '../../constants/constants';
 import './style.css';
 
 class ItemTaskList extends Component {
-
   state = {
     idEdit: 0,
     valueBeforeEdit: '',
@@ -33,7 +32,7 @@ class ItemTaskList extends Component {
   }
 
   handleInputBlur = (e) => {
-    const { deleteTodo, todolist, editTodo} = this.props;
+    const { deleteTodo, todolist, editTodo } = this.props;
     const text = e.target.value.trim();
     if (text === '') return deleteTodo(todolist.id);
     e.target.value = '';
@@ -83,7 +82,7 @@ class ItemTaskList extends Component {
               className="list-checkbox"
               onChange={this.handleClickCheckbox}
             />
-            <label htmlFor={todolist.id}/>
+            <label htmlFor={todolist.id} />
             <span className="task-list_text" onDoubleClick={this.handleDoubleClick}>{todolist.title}</span>
             <BtnDelete onClickDelete={deleteTodo} id={todolist.id} />
           </div>

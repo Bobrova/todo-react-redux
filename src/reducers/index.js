@@ -5,5 +5,5 @@ import todoFilters from './ToDoFilters';
 
 export default combineReducers({
   todos,
-  todoFilters
-})
+  todoFilters,
+});
