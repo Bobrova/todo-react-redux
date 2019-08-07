@@ -1,0 +1,10 @@
+.main {
+  box-shadow: 2px 3px 8px -2px gray;
+}
+
+.main__header {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  cursor: text;
+}
