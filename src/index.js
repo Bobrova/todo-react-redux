@@ -10,7 +10,7 @@ const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__&&
   window.__REDUX_DEVTOOLS_EXTENSION__())
 
 const update = () => {
-  localStorage.setItem("todoApp", JSON.stringify(store.getState()));
+  localStorage.setItem("todoApp-redux", JSON.stringify(store.getState()));
 };
 
 store.subscribe(update);

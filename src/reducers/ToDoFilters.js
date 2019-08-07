@@ -2,9 +2,9 @@ import { SET_VISIBILITY_FILTER } from '../constants/ActionTypes'
 import { SHOW_ALL } from '../constants/TodoFilters'
 
 const initialState =
-  localStorage.getItem("todoApp") &&
-  JSON.parse(localStorage.getItem("todoApp")).todos.length !== 0
-    ? JSON.parse(localStorage.getItem("todoApp")).todoFilters
+  localStorage.getItem("todoApp-redux") &&
+  JSON.parse(localStorage.getItem("todoApp-redux")).todos.length !== 0
+    ? JSON.parse(localStorage.getItem("todoApp-redux")).todoFilters
     : SHOW_ALL;
 
 export default function todoFilters(state = initialState, action) {

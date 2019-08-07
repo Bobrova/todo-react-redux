@@ -7,8 +7,8 @@ import {
   CLEAR_COMPLETED,
 } from '../constants/ActionTypes';
 
-const initialState = localStorage.getItem("todoApp")
-  ? JSON.parse(localStorage.getItem("todoApp")).todos
+const initialState = localStorage.getItem("todoApp-redux")
+  ? JSON.parse(localStorage.getItem("todoApp-redux")).todos
   : [];
 
 
