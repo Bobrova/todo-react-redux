@@ -8,8 +8,7 @@
   padding: 10px;
 }
 
-.btnDel::before,
-.btnDel::after {
+.btnDel:before, .btnDel:after {
   position: absolute;
   bottom: 10px;
   right: 20px;
@@ -19,10 +18,10 @@
   background-color: #e27171;
 }
 
-.btnDel::before {
+.btnDel:before {
   transform: rotate(45deg);
 }
 
-.btnDel::after {
+.btnDel:after {
   transform: rotate(-45deg);
 }

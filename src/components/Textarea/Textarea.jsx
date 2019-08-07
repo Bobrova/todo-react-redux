@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { ENTER_KEY_CODE } from '../../constants/constants'
 import './style.css';
 
 class Textarea extends Component {
   handleKeyPress = (e) => {
-    const { getText } = this.props;
-    const ENTER_KEY_CODE = 13;
+    const { addTodo, itemId } = this.props;
     const text = e.target.value;
     if (e.keyCode === ENTER_KEY_CODE) {
       e.preventDefault();
       if (text !== '' && /\S/.test(text)) {
         e.target.value = '';
-        getText(text);
+        const task = { id: itemId + 1, title: text, completed: false };
+        addTodo(task);
       }
     }
   }
 
-  render() {
+  render () {
     return (
-      <textarea
-        wrap="off"
-        className="main__input-area"
-        placeholder="What needs to be done?"
-        onKeyDown={this.handleKeyPress}
-      />
+      <textarea 
+        wrap="off" 
+        className="main__input-area js-input-text" 
+        placeholder="What needs to be done?" 
+        onKeyDown={this.handleKeyPress}>
+      </textarea>
     );
   }
 }
 
 Textarea.propTypes = {
-  getText: PropTypes.func.isRequired,
+  addTodo: PropTypes.func.isRequired,
+  itemId: PropTypes.number.isRequired,
 };
 
 export default Textarea;

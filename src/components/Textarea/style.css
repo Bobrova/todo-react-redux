@@ -5,11 +5,12 @@
   padding: 20px;
   margin: 0;
   border: none;
+  height: inherit;
   width: 89%;
   height: 100%;
   resize: none;
   font: 24px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #444;
+  color: #444444;
   overflow: hidden;
   box-sizing: border-box;
 }

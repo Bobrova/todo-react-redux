@@ -15,9 +15,9 @@
 }
 
 .footer-item {
+  color: #7f7e7e;
   margin: 10px;
   float: left;
-  color: #7f7e7e;
 }
 
 .item-select {
@@ -27,11 +27,11 @@
 }
 
 .bookmarks {
-  padding: 2px 6px;
-  margin: 6px;
+  box-sizing: border-box;
   border: 1px solid transparent;
   border-radius: 3px;
-  box-sizing: border-box;
+  padding: 2px 6px;
+  margin: 6px;
 }
 
 .bookmarks:hover {

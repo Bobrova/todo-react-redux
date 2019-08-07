@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Title from '../Title';
 import BtnDelete from '../BtnDelete';
+import { ENTER_KEY_CODE } from '../../constants/constants'
 import './style.css';
 
 class ItemTaskList extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      idEdit: 0,
-      valueBeforeEdit: '',
-    };
-  }
-
-  handleEditItem = (todolist) => {
-    this.setState({
-      idEdit: todolist.id,
-      valueBeforeEdit: todolist.title,
-    });
-  }
+  state = {
+    idEdit: 0,
+    valueBeforeEdit: '',
+  };
 
   handleClickCheckbox = () => {
-    const { checkedItem, todolist } = this.props;
-    checkedItem(todolist.id);
+    const { completeTodo, todolist } = this.props;
+    completeTodo(todolist.id);
   }
 
   handleKeyPress = (e) => {
-    const { todolist, editItem } = this.props;
-    const ENTER_KEY_CODE = 13;
+    const { deleteTodo, todolist, editTodo } = this.props;
     if (e.keyCode === ENTER_KEY_CODE) {
       e.preventDefault();
       const text = e.target.value.trim();
-      if (text === '') return editItem(todolist, true);
+      if (text === '') return deleteTodo(todolist.id);
       if (text !== '' && /\S/.test(text)) {
         e.target.value = '';
-        const task = { id: todolist.id, title: text, completed: todolist.completed };
-        editItem(task);
+        editTodo(todolist.id, text);
         this.setState({
           idEdit: 0,
         });
@@ -45,12 +33,11 @@ class ItemTaskList extends Component {
   }
 
   handleInputBlur = (e) => {
-    const { todolist, editItem } = this.props;
+    const { deleteTodo, todolist, editTodo} = this.props;
     const text = e.target.value.trim();
-    if (text === '') return editItem(todolist, true);
+    if (text === '') return deleteTodo(todolist.id);
     e.target.value = '';
-    const task = { id: todolist.id, title: text, completed: todolist.completed };
-    editItem(task);
+    editTodo(todolist.id, text);
     this.setState({
       idEdit: 0,
     });
@@ -60,9 +47,18 @@ class ItemTaskList extends Component {
     this.setState({ valueBeforeEdit: e.target.value });
   }
 
+  handleDoubleClick = () => {
+    const { todolist } = this.props;
+
+    this.setState({
+      idEdit: todolist.id,
+      valueBeforeEdit: todolist.title,
+    });
+  }
+
   render() {
     const { idEdit, valueBeforeEdit } = this.state;
-    const { todolist, deleteItem } = this.props;
+    const { todolist, deleteTodo } = this.props;
     const { completed } = todolist;
     const isEdit = (todolist.id === idEdit);
 
@@ -87,9 +83,9 @@ class ItemTaskList extends Component {
               className="list-checkbox"
               onChange={this.handleClickCheckbox}
             />
-            <label htmlFor={todolist.id}/>
-            <Title todolist={todolist} editItem={this.handleEditItem} />
-            <BtnDelete onClickDelete={deleteItem} id={todolist.id} />
+            <label htmlFor={todolist.id}></label>
+            <span className="task-list_text" onDoubleClick={this.handleDoubleClick}>{todolist.title}</span>
+            <BtnDelete onClickDelete={deleteTodo} id={todolist.id} />
           </div>
         )}
       </React.Fragment>
@@ -103,9 +99,9 @@ ItemTaskList.propTypes = {
     title: PropTypes.string,
     completed: PropTypes.bool,
   }).isRequired,
-  deleteItem: PropTypes.func.isRequired,
-  editItem: PropTypes.func.isRequired,
-  checkedItem: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  editTodo: PropTypes.func.isRequired,
+  completeTodo: PropTypes.func.isRequired,
 };
 
 export default ItemTaskList;
