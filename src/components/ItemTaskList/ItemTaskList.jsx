@@ -83,7 +83,7 @@ class ItemTaskList extends Component {
               className="list-checkbox"
               onChange={this.handleClickCheckbox}
             />
-            <label htmlFor={todolist.id}></label>
+            <label htmlFor={todolist.id}/>
             <span className="task-list_text" onDoubleClick={this.handleDoubleClick}>{todolist.title}</span>
             <BtnDelete onClickDelete={deleteTodo} id={todolist.id} />
           </div>

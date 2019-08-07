@@ -17,11 +17,10 @@
 }
 
 .list-item:hover .btnDel {
-  opacity: .4;
+  opacity: 1.4;
 }
 
 .list-item .btnDel:hover {
   opacity: 1;
   cursor: pointer;
 }
-

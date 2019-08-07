@@ -1,0 +1,31 @@
+{
+    "extends": ["airbnb"],
+    "plugins": [
+        "import",
+        "react",
+        "jsx-a11y"
+    ],
+    
+    "env": {
+      "browser": true
+    },
+
+    "parserOptions": {
+    "ecmaVersion": 6
+    },
+    "parser": "babel-eslint",
+
+    "rules": {
+      "linebreak-style": 0,
+      "jsx-a11y/label-has-associated-control": [ "error", {
+        "required": {
+          "some": [ "nesting", "id"  ]
+        }
+      }],
+      "jsx-a11y/label-has-for": [ "error", {
+        "required": {
+          "some": [ "nesting", "id"  ]
+        }
+      }]
+    }
+}
