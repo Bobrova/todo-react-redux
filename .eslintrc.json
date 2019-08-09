@@ -27,6 +27,9 @@
       "react/forbid-prop-types": "off",
       "import/prefer-default-export": "off",
       "no-underscore-dangle": "off",
-      "react/jsx-filename-extension": "off"
+      "react/jsx-filename-extension": "off",
+      "arrow-parens": "off",
+      "import/prefer-default-export": "off",
+      "arrow-body-style": "off"
     }
 }
