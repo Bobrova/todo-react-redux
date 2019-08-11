@@ -21,7 +21,7 @@ class ListFooter extends Component {
     const borderActive = (tab === 'Active') ? 'activeBord' : '';
     const borderCompleted = (tab === 'Completed') ? 'activeBord' : '';
     return (
-      <li className="list-footer js-list-footer">
+      <li className="list-footer">
         <span className="footer-item item-select active-task">{countActiveItem === 1 ? `${countActiveItem} item left` : `${countActiveItem} items left`}</span>
         <div className="bookmarks-wrapper">
           <span className={`footer-item bookmarks ${borderAll}`} onClick={this.handleClickTab}>All</span>

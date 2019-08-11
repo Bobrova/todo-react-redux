@@ -7,49 +7,40 @@ import {
   CLEAR_COMPLETED,
 } from '../constants/ActionTypes';
 
-const initialState = localStorage.getItem("todoApp-redux")
-  ? JSON.parse(localStorage.getItem("todoApp-redux")).todos
+const initialState = localStorage.getItem('todoApp-redux')
+  ? JSON.parse(localStorage.getItem('todoApp-redux')).todos
   : [];
-
 
 export default function todos(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
-      return [
-        ...state,
-          action.task
-      ]
+      return [...state, action.task];
 
     case DELETE_TODO:
-      return state.filter(todo =>
-        todo.id !== action.id
-      )
+      return state.filter(todo => todo.id !== action.id);
 
-    case COMPLETE_ALL_TODOS:
-      const areAllMarked = state.every(todo => todo.completed)
+    case COMPLETE_ALL_TODOS: {
+      const areAllMarked = state.every(todo => todo.completed);
       return state.map(todo => ({
         ...todo,
-        completed: !areAllMarked
-      }))
+        completed: !areAllMarked,
+      }));
+    }
 
     case EDIT_TODO:
-      return state.map(todo =>
-        todo.id === action.id ?
-          { ...todo, title: action.text } :
-          todo
-      )
+      return state.map(todo => (todo.id === action.id
+        ? { ...todo, title: action.text }
+        : todo));
 
     case COMPLETE_TODO:
-      return state.map(todo =>
-        todo.id === action.id ?
-          { ...todo, completed: !todo.completed } :
-          todo
-      )
+      return state.map(todo => (todo.id === action.id
+        ? { ...todo, completed: !todo.completed }
+        : todo));
 
     case CLEAR_COMPLETED:
-      return state.filter(todo => todo.completed === false)
+      return state.filter(todo => todo.completed === false);
 
     default:
-      return state
+      return state;
   }
 }

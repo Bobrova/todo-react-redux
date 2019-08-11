@@ -18,7 +18,7 @@ const Main = (props) => {
     completeAllTodos,
   } = actions;
 
-  const countActiveItem = (todolist.filter(itemList => !itemList.completed)).length; // eslint-disable-line
+  const countActiveItem = (todolist.filter(itemList => !itemList.completed)).length;
   return (
     <div className="main">
       <div className="main__header">
